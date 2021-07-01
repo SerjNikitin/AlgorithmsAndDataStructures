@@ -1,6 +1,7 @@
 package algorithmsAndDataStructures;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 public class MyArrayList<E extends Comparable<E>> {
     private E[] list;
@@ -48,7 +49,7 @@ public class MyArrayList<E extends Comparable<E>> {
             }
             list[index] = item;
             size++;
-        } else throw new ArrayIndexOutOfBoundsException("index " + index);
+        } else throw new ArrayIndexOutOfBoundsException("index" + index + "is not correct ");
     }
 
     public boolean remove(E item) {
@@ -61,7 +62,7 @@ public class MyArrayList<E extends Comparable<E>> {
 
     public void removeIndex(int index) {
         if (isEmpty()) {
-            throw new IndexOutOfBoundsException();
+            throw new NoSuchElementException("Array is empty");
         }
         if (index >= 0 & index <= size) {
             for (int i = index; i < size; i++) {
@@ -69,7 +70,7 @@ public class MyArrayList<E extends Comparable<E>> {
             }
             size--;
             list[size] = null;
-        }
+        } else throw new ArrayIndexOutOfBoundsException("index" + index + "is not correct ");
     }
 
     public boolean isEmpty() {
@@ -79,7 +80,7 @@ public class MyArrayList<E extends Comparable<E>> {
     public E get(int index) {
         if (index >= 0 & index < size) {
             return list[index];
-        } else throw new IndexOutOfBoundsException("no index");
+        } else throw new ArrayIndexOutOfBoundsException("index" + index + "is not correct ");
     }
 
     public int indexOf(E item) {
