@@ -41,7 +41,6 @@ public class MyArrayList<E extends Comparable<E>> {
         size++;
     }
 
-    //    Проверка на переполненность не делается но массив как будто сам увеличивается не могу понять почему так)
     public void add(int index, E item) {
         if (index >= 0 & index <= size) {
             for (int i = size; i > index; i--) {

@@ -5,6 +5,8 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
+        doTask();
+
         long startTimeCreate = System.currentTimeMillis();
         Random random = new Random();
         MyArrayList<Integer> mal = new MyArrayList<>(100000);
@@ -12,12 +14,9 @@ public class Main {
             mal.add(random.nextInt(100000));
         }
         System.out.println(System.currentTimeMillis() - startTimeCreate);
-
         selectionSort(mal);
         insertionSort(mal);
         bubbleSort(mal);
-
-
     }
 
     public static void selectionSort(MyArrayList<Integer> mal) {
@@ -51,8 +50,8 @@ public class Main {
         list.add(8);
         list.add(9);
         list.add(10);
-        list.add(2, 66);
-        list.add(4, 66);
+        list.add(10, 66);
+        list.add(11, 66);
         list.add(3, 66);
 
         System.out.println(list);
