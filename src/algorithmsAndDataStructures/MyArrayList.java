@@ -20,6 +20,7 @@ public class MyArrayList<E extends Comparable<E>> {
 
     public MyArrayList() {
         list = (E[]) new Comparable[DEFAULT_CAPACITY];
+        capacity = DEFAULT_CAPACITY;
     }
 
     public int size() {
@@ -27,7 +28,8 @@ public class MyArrayList<E extends Comparable<E>> {
     }
 
     public void add(E item) {
-        if (capacity < size) {
+//        capacity = DEFAULT_CAPACITY;
+        if (capacity > size) {
             list[size] = item;
             size++;
         } else checkArray(item);
@@ -44,11 +46,13 @@ public class MyArrayList<E extends Comparable<E>> {
 
     public void add(int index, E item) {
         if (index >= 0 & index <= size) {
-            for (int i = size; i > index; i--) {
-                list[i] = list[i - 1];
-            }
-            list[index] = item;
-            size++;
+            if (capacity > size) {
+                for (int i = size; i > index; i--) {
+                    list[i] = list[i - 1];
+                }
+                list[index] = item;
+                size++;
+            } else checkArray(item);
         } else throw new ArrayIndexOutOfBoundsException("index" + index + "is not correct ");
     }
 
