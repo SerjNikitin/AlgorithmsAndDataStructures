@@ -15,8 +15,7 @@ public class Main {
         }
         System.out.println(System.currentTimeMillis() - startTimeCreate);
         selectionSort(mal);
-        insertionSort(mal);
-        bubbleSort(mal);
+
     }
 
     public static void selectionSort(MyArrayList<Integer> mal) {
