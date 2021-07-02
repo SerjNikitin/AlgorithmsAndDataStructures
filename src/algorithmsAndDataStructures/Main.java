@@ -6,12 +6,32 @@ public class Main {
 
     public static void main(String[] args) {
 //        doTask();
-        queue();
+//        queue();
+        priorityQueue();
+    }
+
+    public static void priorityQueue() {
+        MyPriorityQueue<Integer> queue = new MyPriorityQueue<>();
+        queue.insert(10);
+        queue.insert(1);
+        queue.insert(5);
+        queue.insert(4);
+        queue.insert(0);
+        queue.insert(-1);
+        queue.insert(-1);
+        queue.insert(-1);
+        queue.insert(-1);
+        queue.insert(-1);
+        queue.insert(-1);
+        queue.insert(-1);
+
+        System.out.println(queue);
+        System.out.println(queue.remove());
 
     }
 
     public static void queue() {
-        MyQueue<Integer> queue = new MyQueue<>();
+        MyDequeue<Integer> queue = new MyDequeue<>();
         queue.insertRight(1);
         queue.insertRight(2);
         queue.insertRight(3);

@@ -2,35 +2,26 @@ package algorithmsAndDataStructures;
 
 import java.util.Arrays;
 
+public class MyQueue<T> {
 
-public class MyQueue<E> {
+    private T[] list;
     private int size;
-    private E[] list;
     private final int DEFAULT_CAPACITY = 10;
     private int begin;
     private int end;
-    private int capacity;
 
     public MyQueue(int capacity) {
-        this.capacity = capacity;
         if (capacity <= 0) {
             throw new IllegalArgumentException("capacity: " + capacity);
-        } else list = (E[]) new Object[capacity];
+        }
+        list = (T[]) new Object[capacity];
     }
 
     public MyQueue() {
-        list = (E[]) new Object[DEFAULT_CAPACITY];
-        capacity = DEFAULT_CAPACITY;
+        list = (T[]) new Object[DEFAULT_CAPACITY];
     }
 
-    public E peekLeft() {
-        if (isEmpty()) {
-            throw new RuntimeException("Queue is empty");
-        }
-        return list[begin];
-    }
-
-    public void insertRight(E item) {
+    public void insert(T item) {
         if (isFull()) {
             throw new RuntimeException("queue is full");
         }
@@ -39,52 +30,24 @@ public class MyQueue<E> {
         end = nextIndex(end);
     }
 
-    public int nextIndex(int index) {
-        return (index + 1) % list.length;
-
-    }
-    public int prevIndex(int index){
-        if (index==0){
-            return list.length-1;
-        }return index-1;
-
-    }
-
-
-    public void insertLeft(E item) {
-        if (isFull()) {
-            throw new RuntimeException("queue is full");
-        }
-
-        size++;
-        list[prevIndex(begin)] = item;
-        begin=prevIndex(begin);
-
-    }
-
-    public E peekRight() {
-        if (isEmpty()) {
-            throw new RuntimeException("Queue is empty");
-        }
-        return list[end-1];
-    }
-
-    public E removeLeft() {
-        E temp = peekLeft();
+    public T remove() {
+        T temp = peek();
         size--;
         list[begin] = null;
         begin = nextIndex(begin);
         return temp;
     }
 
-    public E removeRight() {
-        E temp = peekRight();
-        size--;
-        list[end-1] = null;
-        end = nextIndex(begin);
-        return temp;
+    public T peek() {
+        if (isEmpty()) {
+            throw new RuntimeException("queue is empty");
+        }
+        return list[begin];
     }
 
+    private int nextIndex(int index) {
+        return (index + 1) % list.length;
+    }
 
     public boolean isFull() {
         return size == list.length;
@@ -98,13 +61,8 @@ public class MyQueue<E> {
         return size;
     }
 
-    //    @Override
-//    public String toString() {
-//        return Arrays.toString(Arrays.copyOf(list, size)) + " b = " + begin + " e = " + end;
-//    }
     @Override
     public String toString() {
         return Arrays.toString(list) + " b = " + begin + " e = " + end;
     }
-
 }
