@@ -1,7 +1,8 @@
 package algorithmsAndDataStructures;
 
+import java.util.Arrays;
 import java.util.EmptyStackException;
-import java.util.Objects;
+
 
 public class MyStack<E> {
     private int size;
@@ -13,12 +14,19 @@ public class MyStack<E> {
         this.capacity = capacity;
         if (capacity <= 0) {
             throw new IllegalArgumentException("capacity: " + capacity);
-        } else list = (E[]) new Objects[capacity];
+        } else list = (E[]) new Object[capacity];
     }
 
     public MyStack() {
-        list = (E[]) new Objects[DEFAULT_CAPACITY];
+        list = (E[]) new Object[DEFAULT_CAPACITY];
         capacity = DEFAULT_CAPACITY;
+    }
+
+    public E pop() {
+        E temp = pick();
+        size--;
+        list[size] = null;
+        return temp;
     }
 
     public E pick() {
@@ -31,9 +39,9 @@ public class MyStack<E> {
     public void push(E item) {
         if (isFull()) {
             capacity = capacity + DEFAULT_CAPACITY / 2 + 1;
-            E[]newList = (E[]) new Objects[capacity];
-            System.arraycopy(list,0,newList,0,size);
-
+            E[] newList = (E[]) new Object[capacity];
+            System.arraycopy(list, 0, newList, 0, size);
+            list = newList;
         }
         list[size] = item;
         size++;
@@ -43,11 +51,16 @@ public class MyStack<E> {
         return size == 0;
     }
 
-    public int getSize() {
+    public int size() {
         return size;
     }
 
     public boolean isFull() {
         return size == list.length;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(Arrays.copyOf(list, size));
     }
 }
