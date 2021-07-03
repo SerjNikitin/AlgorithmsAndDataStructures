@@ -1,5 +1,6 @@
 package algorithmsAndDataStructures;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class MyQueue<T> {
@@ -9,8 +10,10 @@ public class MyQueue<T> {
     private final int DEFAULT_CAPACITY = 10;
     private int begin;
     private int end;
+    private int capacity;
 
     public MyQueue(int capacity) {
+        this.capacity = capacity;
         if (capacity <= 0) {
             throw new IllegalArgumentException("capacity: " + capacity);
         }
@@ -19,11 +22,16 @@ public class MyQueue<T> {
 
     public MyQueue() {
         list = (T[]) new Object[DEFAULT_CAPACITY];
+        capacity = DEFAULT_CAPACITY;
     }
 
     public void insert(T item) {
         if (isFull()) {
-            throw new RuntimeException("queue is full");
+            end = size;
+            capacity = capacity + DEFAULT_CAPACITY / 2 + 1;
+            T[] newArray1 = (T[]) new Object[capacity];
+            System.arraycopy(list, 0, newArray1, 0, size);
+            list = newArray1;
         }
         size++;
         list[end] = item;

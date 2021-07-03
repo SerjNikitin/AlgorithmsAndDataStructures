@@ -43,30 +43,28 @@ public class MyDequeue<E> {
         return (index + 1) % list.length;
 
     }
-    public int prevIndex(int index){
-        if (index==0){
-            return list.length-1;
-        }return index-1;
 
+    public int prevIndex(int index) {
+        if (index == 0) {
+            return list.length - 1;
+        }
+        return index - 1;
     }
-
 
     public void insertLeft(E item) {
         if (isFull()) {
             throw new RuntimeException("queue is full");
         }
-
         size++;
         list[prevIndex(begin)] = item;
-        begin=prevIndex(begin);
-
+        begin = prevIndex(begin);
     }
 
     public E peekRight() {
         if (isEmpty()) {
             throw new RuntimeException("Queue is empty");
         }
-        return list[end-1];
+        return list[end - 1];
     }
 
     public E removeLeft() {
@@ -80,11 +78,10 @@ public class MyDequeue<E> {
     public E removeRight() {
         E temp = peekRight();
         size--;
-        list[end-1] = null;
+        list[end - 1] = null;
         end = nextIndex(begin);
         return temp;
     }
-
 
     public boolean isFull() {
         return size == list.length;
@@ -98,10 +95,6 @@ public class MyDequeue<E> {
         return size;
     }
 
-    //    @Override
-//    public String toString() {
-//        return Arrays.toString(Arrays.copyOf(list, size)) + " b = " + begin + " e = " + end;
-//    }
     @Override
     public String toString() {
         return Arrays.toString(list) + " b = " + begin + " e = " + end;

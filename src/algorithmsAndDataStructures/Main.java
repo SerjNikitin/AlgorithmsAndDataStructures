@@ -6,31 +6,32 @@ public class Main {
 
     public static void main(String[] args) {
 //        doTask();
-//        queue();
-        priorityQueue();
+//        dequeue();
+//        priorityQueue();
+//        stack();
+        queue();
+    }
+
+    public static void queue() {
+        MyQueue<Integer> queue = new MyQueue<>();
+        for (int i = 1; i < 17; i++) {
+            queue.insert(i);
+        }
+        System.out.println(queue);
+
     }
 
     public static void priorityQueue() {
         MyPriorityQueue<Integer> queue = new MyPriorityQueue<>();
-        queue.insert(10);
-        queue.insert(1);
-        queue.insert(5);
-        queue.insert(4);
-        queue.insert(0);
-        queue.insert(-1);
-        queue.insert(-1);
-        queue.insert(-1);
-        queue.insert(-1);
-        queue.insert(-1);
-        queue.insert(-1);
-        queue.insert(-1);
-
+        for (int i = 1; i < 17; i++) {
+            queue.insert(i);
+        }
         System.out.println(queue);
         System.out.println(queue.remove());
 
     }
 
-    public static void queue() {
+    public static void dequeue() {
         MyDequeue<Integer> queue = new MyDequeue<>();
         queue.insertRight(1);
         queue.insertRight(2);
@@ -51,38 +52,14 @@ public class Main {
         System.out.println(queue);
         System.out.println(queue.removeRight());
         System.out.println(queue);
-
-//
-//        System.out.println(queue);
-//
-//
-//        System.out.println(queue.remove());
-//
-//        System.out.println(queue);
-//
-//        queue.insertRate(5);
-//
-//        System.out.println(queue);
-//        queue.insertLeft(12);
-//        System.out.println(queue);
-
     }
 
     public static void stack() {
         MyStack<Integer> stack = new MyStack<>();
-        stack.push(2);
-        stack.push(2);
-        stack.push(2);
-        stack.push(2);
-        stack.push(2);
-        stack.push(2);
-        stack.push(2);
-        stack.push(2);
-        stack.push(2);
-        stack.push(2);
-        stack.push(2);
-        stack.push(2);
-        stack.push(2);
+        for (int i = 1; i < 17; i++) {
+            stack.push(i);
+        }
+        System.out.println(stack.pop());
         System.out.println(stack);
     }
 
