@@ -1,6 +1,7 @@
 package algorithmsAndDataStructures;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 
 public class MyDequeue<E> {
@@ -97,7 +98,14 @@ public class MyDequeue<E> {
 
     @Override
     public String toString() {
-        return Arrays.toString(list) + " b = " + begin + " e = " + end;
+        return Arrays.toString(Arrays.stream(list).filter(Objects::nonNull).toArray());
     }
-
 }
+
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder();
+//        for (int i = begin; i != end; i=nextIndex(i)) {
+//            sb.append(list[i]).append(", ");
+//        }
+//        return sb.toString();}
+

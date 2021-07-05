@@ -2,6 +2,7 @@ package algorithmsAndDataStructures;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class MyQueue<T> {
 
@@ -71,6 +72,18 @@ public class MyQueue<T> {
 
     @Override
     public String toString() {
-        return Arrays.toString(list) + " b = " + begin + " e = " + end;
+        StringBuilder sb = new StringBuilder();
+        if (end == begin) {
+            for (int i = begin; i < size; i++) {
+                sb.append(list[i]).append(",");
+            }
+        } else {
+            for (int i = begin; i != end; i = nextIndex(i)) {
+                sb.append(list[i]).append(", ");
+            }
+        }
+        return sb.toString();
+
+//         return Arrays.toString(Arrays.stream(list).filter(Objects::nonNull).toArray());
     }
 }

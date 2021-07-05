@@ -9,7 +9,7 @@ public class Main {
 //        dequeue();
 //        priorityQueue();
 //        stack();
-        queue();
+//        queue();
     }
 
     public static void queue() {
@@ -18,6 +18,9 @@ public class Main {
             queue.insert(i);
         }
         System.out.println(queue);
+        queue.remove();
+        System.out.println(queue);
+        System.out.println(queue.size());
 
     }
 
