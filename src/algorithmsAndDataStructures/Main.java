@@ -1,6 +1,8 @@
 package algorithmsAndDataStructures;
 
 
+import java.util.Iterator;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -39,6 +41,12 @@ public class Main {
         list.insertFirst(4);
         list.insertFirst(5);
         list.insertFirst(6);
+        Iterator<Integer> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+
         System.out.println(list);
     }
 }

@@ -173,7 +173,7 @@ public class MyLinkedList<E> implements Iterable<E> {
 
         @Override
         public boolean hasNext() {
-            return current != null;
+            return current.next != null;
         }
 
         @Override
