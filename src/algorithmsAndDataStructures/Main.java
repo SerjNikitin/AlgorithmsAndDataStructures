@@ -3,6 +3,18 @@ package algorithmsAndDataStructures;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+//        ChainingHashMap<Integer,String> map=new ChainingHashMap<>(10);
+//        map.put(1,"one");
+//        map.put(2,"two");
+//        map.put(3,"three");
+//        System.out.println(map.toString());
+//        System.out.println(map.get(1));
+
+        LinearProbingHashMap<Integer,String> map=new LinearProbingHashMap<>();
+        map.put(1,"one");
+        map.put(2,"two");
+        map.put(3,"three");
+        System.out.println(map.toString());
+        System.out.println(map.get(1));
     }
 }
