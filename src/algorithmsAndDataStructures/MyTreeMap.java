@@ -86,20 +86,7 @@ public class MyTreeMap<K extends Comparable<K>, V> {
             node.right = put(node.right, key, value);
         }
         node.size = 1 + size(node.left) + size(node.right);
-        if (node.left == null && node.right == null) {
-            node.height = 0;
-        } else if (node.left != null && node.right == null) {
-            node.height = 1 + node.left.height;
-        } else if (node.left == null) {
-            node.height = 1 + node.right.height;
-        } else if (node.left.height > node.right.height) {
-            node.height = 1 + node.left.height;
-        } else if (node.left.height < node.right.height) {
-            node.height = 1 + node.right.height;
-        } else {
-            node.height = 1 + node.left.height;
-        }
-
+        height(node);
         return node;
     }
 
@@ -139,6 +126,7 @@ public class MyTreeMap<K extends Comparable<K>, V> {
         }
         node.left = deleteMin(node.left);
         node.size = 1 + size(node.left) + size(node.right);
+        height(node);
         return node;
     }
 
@@ -169,8 +157,8 @@ public class MyTreeMap<K extends Comparable<K>, V> {
             node.left = temp.left;
         }
         node.size = 1 + size(node.left) + size(node.right);
+        height(node);
         return node;
-
     }
 
     public int height() {
@@ -180,6 +168,19 @@ public class MyTreeMap<K extends Comparable<K>, V> {
     private int height(Node node) {
         if (node == null) {
             return 0;
+        }
+        if (node.left == null && node.right == null) {
+            node.height = 0;
+        } else if (node.left != null && node.right == null) {
+            node.height = 1 + node.left.height;
+        } else if (node.left == null) {
+            node.height = 1 + node.right.height;
+        } else if (node.left.height > node.right.height) {
+            node.height = 1 + node.left.height;
+        } else if (node.left.height < node.right.height) {
+            node.height = 1 + node.right.height;
+        } else {
+            node.height = 1 + node.left.height;
         }
         return node.height;
     }
